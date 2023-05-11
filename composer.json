@@ -1,0 +1,39 @@
+{
+  "name": "vulpes/http",
+  "type": "library",
+  "description": "PSR-7 HTTP Message & PSR-17 HTTP Factories & PSR-18 HTTP Client implementation.",
+  "keywords": ["psr", "psr-7", "psr-17", "psr-18", "http-message", "http-factories", "http-client"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "András Würth",
+      "email": "wuertha@live.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-fileinfo": "*",
+    "psr/http-client": "^1.0",
+    "psr/http-factory": "^1.0",
+    "psr/http-message": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Http\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Http\\": "tests/"
+    }
+  },
+  "provide": {
+    "psr/http-client-implementation": "1.0",
+    "psr/http-factory-implementation": "1.0",
+    "psr/http-message-implementation": "2.0"
+  }
+}

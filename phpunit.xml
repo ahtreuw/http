@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" stopOnFailure="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.1/phpunit.xsd" cacheDirectory=".phpunit.cache">
+  <php>
+    <env name="ENVIRONMENT" value="testing"/>
+    <ini name="error_reporting" value="1"/>
+    <ini name="xdebug.mode" value="coverage"/>
+    <env name="XDEBUG_MODE" value="coverage"/>
+  </php>
+  <coverage includeUncoveredFiles="true"/>
+  <testsuites>
+    <testsuite name="Unit">
+      <directory suffix="Test.php">tests</directory>
+    </testsuite>
+  </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+  </source>
+</phpunit>
