@@ -128,7 +128,7 @@ class cURLClient implements ClientInterface
             return null;
         }
 
-        if ($request->getBody()->getSize()) {
+        if (0 < $request->getBody()->getSize()) {
             return $request->getBody()->__toString();
         }
 
