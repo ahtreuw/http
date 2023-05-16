@@ -115,7 +115,7 @@ class cURLClient implements ClientInterface
     {
         $headers = [];
         foreach ($request->getHeaders() as $name => $values) {
-            $headers[$name] = $request->getHeaderLine($name);
+            $headers[] = $name . ': ' . $request->getHeaderLine($name);
         }
         return $headers;
     }

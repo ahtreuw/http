@@ -11,6 +11,14 @@ interface cURLRequestInterface
      */
     public function curl_setopt_array(array $options): bool;
 
+
+    /**
+     * Set an option for a cURL transfer
+     * @link https://php.net/manual/en/function.curl-setopt.php
+     * @return bool true if all options were successfully set.
+     */
+    public function curl_setopt(int $option, mixed $value): bool;
+
     /**
      * Perform a cURL session
      * @link https://php.net/manual/en/function.curl-exec.php

@@ -19,6 +19,14 @@ class cURLRequest implements cURLRequestInterface
     /**
      * @inheritDoc
      */
+    public function curl_setopt(int $option, mixed $value): bool
+    {
+        return curl_setopt($this->ch, $option, $value);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function curl_exec(): string|bool
     {
         return curl_exec($this->ch);
