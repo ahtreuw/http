@@ -13,11 +13,9 @@ use Http\Message\Response;
 class ResponseFactory implements ResponseFactoryInterface
 {
     #[Pure] public function __construct(
-        private StreamFactoryInterface $streamFactory = new StreamFactory,
-        private int                    $jsonEncodeFlags = JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT
-    )
-    {
-    }
+        private readonly StreamFactoryInterface $streamFactory = new StreamFactory,
+        private readonly int                    $jsonEncodeFlags = JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT
+    ) {}
 
     public function createResponse(
         int                                    $code = 200,

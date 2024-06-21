@@ -2,6 +2,7 @@
 
 namespace Http\Factory;
 
+use Http\HTTP;
 use InvalidArgumentException;
 use JetBrains\PhpStorm\Pure;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,9 +16,9 @@ use Http\Message\ServerRequest;
 class ServerRequestFactory implements ServerRequestFactoryInterface
 {
     #[Pure] public function __construct(
-        private UriFactoryInterface          $uriFactory = new UriFactory,
-        private StreamFactoryInterface       $streamFactory = new StreamFactory,
-        private UploadedFileFactoryInterface $uploadedFileFactory = new UploadedFileFactory
+        private readonly UriFactoryInterface    $uriFactory = new UriFactory,
+        private readonly StreamFactoryInterface $streamFactory = new StreamFactory,
+        private readonly UploadedFileFactoryInterface $uploadedFileFactory = new UploadedFileFactory
     )
     {
     }
@@ -46,6 +47,17 @@ class ServerRequestFactory implements ServerRequestFactoryInterface
             serverParams: $serverParams,
             uploadedFiles: $this->normalizeFiles($_FILES ?? []),
         );
+    }
+
+    public function createServerRequestFromGlobals(): ServerRequestInterface
+    {
+        $serverParams = $_SERVER ?? [];
+
+        $method = php_sapi_name() === 'cli' ? 'CLI' : $serverParams['REQUEST_METHOD'] ?? HTTP::METHOD_GET;
+
+        $uri = $this->uriFactory->createUriFromGlobals();
+
+        return $this->createServerRequest($method, $uri, $serverParams);
     }
 
     private function createBody(): StreamInterface

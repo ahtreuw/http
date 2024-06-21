@@ -15,10 +15,8 @@ class UploadedFileFactory implements UploadedFileFactoryInterface, UploadFileInt
     protected const BUFFER_SIZE = 8192;
 
     #[Pure] public function __construct(
-        private StreamFactoryInterface $factory = new StreamFactory
-    )
-    {
-    }
+        private readonly StreamFactoryInterface $factory = new StreamFactory
+    ) {}
 
     #[Pure] public function createUploadedFile(
         StreamInterface $stream,

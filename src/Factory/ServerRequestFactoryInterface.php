@@ -12,4 +12,6 @@ interface ServerRequestFactoryInterface extends \Psr\Http\Message\ServerRequestF
         array $serverParams = [],
         array $attributes = []
     ): ServerRequestInterface;
+
+    public function createServerRequestFromGlobals(): ServerRequestInterface;
 }

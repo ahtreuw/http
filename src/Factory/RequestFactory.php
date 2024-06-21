@@ -11,8 +11,8 @@ use Http\Message\Request;
 class RequestFactory implements RequestFactoryInterface
 {
     #[Pure] public function __construct(
-        private StreamFactoryInterface $streamFactory = new StreamFactory,
-        private UriFactoryInterface    $uriFactory = new UriFactory,
+        private readonly StreamFactoryInterface $streamFactory = new StreamFactory,
+        private readonly UriFactoryInterface    $uriFactory = new UriFactory,
     ) {}
 
     public function createRequest(
