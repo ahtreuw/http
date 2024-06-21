@@ -19,6 +19,11 @@ class UriFactory implements UriFactoryInterface
         return $this->createUri($this->serverParamsToUri(...$serverParams));
     }
 
+    public function createUriFromGlobals(): UriInterface
+    {
+        return $this->createUri($this->serverParamsToUri(...$_SERVER));
+    }
+
     protected function serverParamsToUri(
         null|string $REQUEST_SCHEME = null,
         null|string $HTTPS = null,
