@@ -7,4 +7,6 @@ use Psr\Http\Message\UriInterface;
 interface UriFactoryInterface extends \Psr\Http\Message\UriFactoryInterface
 {
     public function createUriFromServerParams(array $serverParams): UriInterface;
+    
+    public function createUriFromGlobals(): UriInterface;
 }
