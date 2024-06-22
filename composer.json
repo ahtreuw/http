@@ -16,7 +16,8 @@
     "ext-fileinfo": "*",
     "psr/http-client": ">=1.0",
     "psr/http-factory": ">=1.0",
-    "psr/http-message": ">=1.0"
+    "psr/http-message": ">=1.0",
+    "vulpes/http-exceptions": "^1.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.1"
