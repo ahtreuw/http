@@ -37,12 +37,7 @@ class ResponseFactory implements ResponseFactoryInterface
     ): ResponseInterface
     {
         $response = new Response($this->prepareJsonBody($body), $code, $reasonPhrase, $protocolVersion, $headers);
-
-        if ($response->hasHeader('Content-type') === false) {
-            $response = $response->withHeader('Content-type', 'application/json;charset=utf-8');
-        }
-
-        return $response;
+        return $response->withHeader('Content-type', 'application/json;charset=utf-8');
     }
 
     public function createHtml(
@@ -56,14 +51,8 @@ class ResponseFactory implements ResponseFactoryInterface
     ): ResponseInterface
     {
         $body = $filename ? $this->createBodyFromFile($filename, $data) : $this->prepareBody($body);
-
         $response = new Response($body, $code, $reasonPhrase, $protocolVersion, $headers);
-
-        if ($response->hasHeader('Content-type') === false) {
-            $response = $response->withHeader('Content-type', 'text/html;charset=utf-8');
-        }
-
-        return $response;
+        return $response->withHeader('Content-type', 'text/html;charset=utf-8');
     }
 
 
